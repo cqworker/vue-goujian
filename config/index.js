@@ -10,7 +10,7 @@ module.exports = {
     // Paths
     // 默认静态资源目录，调用的时候直接用/static/img/1.jpg
     assetsSubDirectory: 'static',
-    assetsPublicPath: './', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名?能达到什么效果呢?
+    assetsPublicPath: '/', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名?能达到什么效果呢?
     // 需要 proxyTable 代理的接口（可跨域）
     proxyTable: {},
 
@@ -64,7 +64,7 @@ module.exports = {
     //设置为./,本地可以访问: 是因为表示相对位置,代表当前路径
     //npm dev 后访问 f12显示为http://localhost:8080/app.js,是因为idea内部集成了http服务,所以设置为/是我们说通常
     //如果是在线文件，可配置为资源服务器域名或 CDN 域名,待验证
-    assetsPublicPath: './',
+    assetsPublicPath: '/',
     //
     /**
      * Source Maps
