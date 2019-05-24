@@ -7,6 +7,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      // path中的路劲不区分大小写
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
