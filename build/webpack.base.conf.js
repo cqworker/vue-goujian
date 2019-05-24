@@ -5,6 +5,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
+console.log('webpack.base.conf.js: '+process.env.NODE_ENV)
 function resolve (dir) {
   // 拼接出绝对路径
   return path.join(__dirname, '..', dir)

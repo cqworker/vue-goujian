@@ -3,7 +3,7 @@
 require('./check-versions')()
 
 
-process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'testing'
 
 const ora = require('ora')//加载动画
 const rm = require('rimraf')//删除文件

@@ -10,11 +10,14 @@ module.exports = {
     // Paths
     // 默认静态资源目录，调用的时候直接用/static/img/1.jpg
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名?能达到什么效果呢?
+    assetsPublicPath: './', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名?能达到什么效果呢?
     // 需要 proxyTable 代理的接口（可跨域）
     proxyTable: {},
 
     // Various Dev Server settings
+    // 开发时映射到http服务器的ip和地址,用于在本地浏览器调试(也可以直接通过文件目录查看但是就没有热加载了)
+    // 跟html中js的HTTP网络请求没有关系
+    // 命令行指定--env.HOST=test.ip 没有生效,推测配置优先级大于命令行
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,//是否在编译（输入命令行npm run dev）后打开http://localhost:8080/页面
@@ -61,7 +64,7 @@ module.exports = {
     //如果是在线文件，可配置为资源服务器域名或 CDN 域名
     //在本地build后,需要修改为./,访问index.html即可
     //npm dev 后访问 为http://localhost:8080/app.js
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

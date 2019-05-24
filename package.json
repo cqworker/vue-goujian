@@ -1,17 +1,20 @@
 {
   "name": "y",
   "version": "1.0.0",
-  "description": "package.json来指定，项目需要用到的npm包，npm install命令根据这个配置文件增减来管理本地的安装包",
+  "description": "详情见package_md.json",
   "author": "cq <chengqun009@163.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev_test": "webpack-dev-server --inline --progress --env.HOST=test.ip --env.PORT=test.port --config build/webpack.dev.conf.js",
+    "dev_prod": "webpack-dev-server --inline --progress --env=prod --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "build_test": "node build/build_test.js"
   },
   "dependencies": {
     "vue": "^2.5.2",

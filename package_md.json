@@ -10,12 +10,18 @@
     //inline模式会在webpack.config.js入口配置中新增webpack-dev-server/client?http://localhost:8080/的入口,使得我们访问路径为localhost:8080/index.html（相应的还有另外一种模式Iframe）;
     //progress:显示打包的进度
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    //①传入参数直接获取生效
+    "dev_test": "webpack-dev-server --inline --progress --env.HOST=test.ip --env.PORT=test.port --config build/webpack.dev.conf.js",
+    //②传入参数在任意js中都可以使用process.argv[4]获取参数值(--env=prod),再进行判断确定ip:port
+    "dev_prod": "webpack-dev-server --inline --progress --env=prod --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
-    "build": "node build/build.js"
+    "build-dev": "node build/build.js",
+    "build-test": "node build/build.js",
+    "build-prod": "node build/build.js"
   },
   //  dependencies(项目依赖库):在安装时使用--save则会更新到dependencies中
   "dependencies": {
