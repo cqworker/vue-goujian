@@ -60,12 +60,12 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, '../dist'),
     // js,css,images存放文件夹名
     assetsSubDirectory: 'static',
-    //js,css中的baseUrl，通常本地打包dist后打开index.html会报错(f12)
-    //如果是在线文件，可配置为资源服务器域名或 CDN 域名
-    //在本地build后,需要修改为./,访问index.html即可
-    //npm dev 后访问 为http://localhost:8080/app.js
+    //设置为/,通常本地打包dist后打开index.html会报错(f12找不到css,js):是因为/是绝对路径表示baseUrl+/xxxx,css，
+    //设置为./,本地可以访问: 是因为表示相对位置,代表当前路径
+    //npm dev 后访问 f12显示为http://localhost:8080/app.js,是因为idea内部集成了http服务,所以设置为/是我们说通常
+    //如果是在线文件，可配置为资源服务器域名或 CDN 域名,待验证
     assetsPublicPath: './',
-
+    //
     /**
      * Source Maps
      */
