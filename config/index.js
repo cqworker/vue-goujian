@@ -8,7 +8,7 @@ module.exports = {
   dev: {
 
     // Paths
-    //默认静态资源目录，调用的时候直接用/static/img/1.jpg
+    // 默认静态资源目录，调用的时候直接用/static/img/1.jpg
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
