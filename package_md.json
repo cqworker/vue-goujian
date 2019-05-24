@@ -1,10 +1,14 @@
+//package.json来指定，项目需要用到的npm包，npm install命令根据这个配置文件增减来管理本地的安装包
 {
   "name": "y",
   "version": "1.0.0",
-  "description": "package.json来指定，项目需要用到的npm包，npm install命令根据这个配置文件增减来管理本地的安装包",
+  "description": "",
   "author": "cq <chengqun009@163.com>",
   "private": true,
   "scripts": {
+    //    启动http服务器，实现实时编译
+    //inline模式会在webpack.config.js入口配置中新增webpack-dev-server/client?http://localhost:8080/的入口,使得我们访问路径为localhost:8080/index.html（相应的还有另外一种模式Iframe）;
+    //progress:显示打包的进度
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
@@ -13,10 +17,14 @@
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js"
   },
+  //  dependencies(项目依赖库):在安装时使用--save则会更新到dependencies中
   "dependencies": {
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
+  //  devDependencies（开发依赖库）：在安装时使用--save-dev将写入到devDependencies
+  //  打包的时候需要，打包完成就不需要了,如webpack
+  //  详情可参考;https://segmentfault.com/a/1190000014804826?
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
@@ -75,10 +83,12 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
+  //指定引擎，node和npm版本
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
+  //限制了浏览器或者客户端需要什么版本才可运行
   "browserslist": [
     "> 1%",
     "last 2 versions",

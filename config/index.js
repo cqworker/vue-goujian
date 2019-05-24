@@ -3,23 +3,24 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-
+//config内的文件其实是服务于build的，大部分是定义一个变量export出去
 module.exports = {
   dev: {
 
     // Paths
     // 默认静态资源目录，调用的时候直接用/static/img/1.jpg
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名?能达到什么效果呢?
+    // 需要 proxyTable 代理的接口（可跨域）
     proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
-    errorOverlay: true,
-    notifyOnErrors: true,
-    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+    autoOpenBrowser: false,//是否在编译（输入命令行npm run dev）后打开http://localhost:8080/页面
+    errorOverlay: true,//浏览器错误提示
+    notifyOnErrors: true,//跨平台错误提示
+    poll: false, //使用文件系统(file system)获取文件改动的通知devServer.watchOptions
 
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
@@ -34,23 +35,32 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-eval-source-map',//增加调试，该属性为原始源代码（仅限行）不可在生产环境中使用
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
-    cacheBusting: true,
-
+    cacheBusting: true,//使缓存失效
+//代码压缩后进行调bug定位将非常困难，于是引入sourcemap记录压缩前后的位置信息记录，当产生错误时直接定位到未压缩前的位置，将大大的方便我们调试
     cssSourceMap: true
   },
 
   build: {
-    // Template for index.html
+    // Template for index.html index编译后生成的位置和名字，根据需要改变后缀，比如index.php
     index: path.resolve(__dirname, '../dist/index.html'),
 
+    // 使用 config/prod.env.js 中定义的编译环境,在之后的版本中被移除,所以应该是可以通关命令行参数动态指定的
+    // env: require('./prod.env'),
+
     // Paths
+    // 编译后存放生成环境代码的位置
     assetsRoot: path.resolve(__dirname, '../dist'),
+    // js,css,images存放文件夹名
     assetsSubDirectory: 'static',
+    //js,css中的baseUrl，通常本地打包dist后打开index.html会报错(f12)
+    //如果是在线文件，可配置为资源服务器域名或 CDN 域名
+    //在本地build后,需要修改为./,访问index.html即可
+    //npm dev 后访问 为http://localhost:8080/app.js
     assetsPublicPath: '/',
 
     /**
@@ -65,7 +75,8 @@ module.exports = {
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
-    productionGzip: false,
+    productionGzip: false,//unit的gzip命令用来压缩文件
+    // 需要使用 gzip 压缩的文件扩展名
     productionGzipExtensions: ['js', 'css'],
 
     // Run the build command with an extra argument to
