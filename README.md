@@ -28,3 +28,13 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+``` bash
+build   构建脚本
+config  配置文件
+src      写前端vue项目
+   —main.js 整个前端项目的入口，引vue
+   —app.vue 根组件
+
+    
+static   静态资源
+```
